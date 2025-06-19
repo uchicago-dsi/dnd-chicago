@@ -1,0 +1,12 @@
+{
+  "name": "Python Docker Dev",
+  "context": "..",
+  "dockerFile": "../Dockerfile",
+  "settings": {
+    "python.pythonPath": "/opt/venv/bin/python"
+  },
+  "mounts": [
+    "source=${localWorkspaceFolder},target=/app,type=bind"
+  ],
+  "remoteUser": "vscode"
+}
