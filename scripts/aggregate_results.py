@@ -1,5 +1,4 @@
 # %%
-import geopandas as gpd
 import pandas as pd
 import json
 from pathlib import Path
@@ -44,14 +43,14 @@ def summarize_election(
   }
 
 # %%
-DATA_DIR = Path("../data/plan_results")
-seats5_results = DATA_DIR.glob("stv_slate_pl_voters_1000_seats_5*.jsonl")
-# %%
-output = []
-for result_file in seats5_results:
-  output.append(summarize_election(result_file))
-# %%
-df = pd.DataFrame(output)
-# %%
+if __name__ == "__main__":
+  DATA_DIR = Path("../data")
+  PLAN_DIR = DATA_DIR / "plan_results"
+  seats5_results = PLAN_DIR.glob("stv_slate_pl_voters_1000_seats_5*.jsonl")
+  output = []
+  for result_file in seats5_results:
+    output.append(summarize_election(result_file))
+  df = pd.DataFrame(output)
+  df.to_parquet(DATA_DIR / "scenario_outcomes" / "scenario_outcomes.parquet")
 
 # %%
