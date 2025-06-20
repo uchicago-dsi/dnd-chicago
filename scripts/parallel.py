@@ -13,10 +13,10 @@ warnings.filterwarnings("ignore")
 
 if __name__ == "__main__":
     n_simultaneous_jobs = 16
-    settings_files = glob("../data/plan_configs/*.json")
+    settings_files = glob("../data/plan_configs/set1/*.json")
 
     # Only grab 10 of the settings files
-    settings_files = settings_files[:1]
+    settings_files = settings_files[1:2]
     output_dir = pl.Path("../data/plan_results").resolve()
 
     ballot_generators = [
